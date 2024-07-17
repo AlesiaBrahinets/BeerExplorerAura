@@ -1,0 +1,82 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+    <aura:attribute name="beerKind" type="Beer_Kind__c"/>	
+    <aura:attribute name="isOpenView" type="Boolean"/>
+    <aura:attribute name="pageReference" type="Object"/>
+    <lightning:navigation aura:id="navigation" />
+    <lightning:overLayLibrary aura:id="overLayLib" />
+    <aura:registerEvent name="addToCart" type="c:AddToCart"/>
+    
+    <div>
+   		<lightning:card  iconName="custom:custom56" class="slds-p-around_medium">
+        	<aura:set attribute="title">
+            	<span class="slds-p-horizontal_small">
+                    {!v.beerKind.Name} 
+                </span>
+        	</aura:set>
+        	<aura:set attribute="footer">
+            	<div style="width: 70%; ">
+            		<lightning:button name="{!v.beerKind.Id}" label="View Details_LIB" value="View Details" 
+                                  	variant="brand-outline" onclick="{!c.showDetail}">
+                	</lightning:button>
+                    <lightning:button name="{!v.beerKind.Id}" label="Add To CartT" value="{!v.beerKind.Name}" 
+                                  	variant="brand-outline" onclick="{!c.addToCart}">
+                	</lightning:button>
+                  <lightning:button name="{!v.beerKind.Id}" label="View Details_AURA_IF" value="View Details" 
+                                  	variant="brand-outline" onclick="{!c.showDetailIf}">
+                	</lightning:button>
+                    
+            	</div>
+         	</aura:set>
+            
+         	<p class="slds-p-horizontal_small">
+         		<div class="slds-grid slds-gutters ">
+         			<div class="slds-col slds-size_2-of-4 slds-align_absolute-center" >
+                		<img src="{!v.beerKind.Beer_Image__c}" class="beerImage"/>
+            		</div>
+            		<div class="slds-col slds-size_2-of-4">
+						<p class="title slds-align_absolute-left">Collection: {!v.beerKind.Collection__c}</p>
+            			<p class="title slds-align_absolute-left">Kind: {!v.beerKind.Name}</p>
+            			<p class="slds-align_absolute-center">Alcohol: {!v.beerKind.Alcohol__c}%</p>
+            			<p class="slds-align_absolute-center">
+               				Price:
+               				<lightning:formattedNumber value="{!v.beerKind.Price__c}" style="currency" currencyCode="USD" 
+                                          maximum-fraction-digits="2"/>
+       					</p>
+            		</div>
+            	</div>
+        	</p>
+        </lightning:card>
+    </div>
+    
+    <aura:if isTrue="{!v.isOpenView}">
+    	<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_medium">
+			<div class="slds-modal__container">
+				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+					<span class="slds-assistive-text">Cancel and close</span>
+				</button>
+				<div class="slds-modal__header">
+					<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">View Detail</h1>
+				</div>
+				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+    				<c:BeerDetails beerId="{!v.beerKind.Id}"/>
+   <div class="slds-p-around_small">
+    <lightning:recordViewForm recordId="{!v.beerKind.Id}" objectApiName="Beer_Kind__c">
+        <div class="slds-box">
+            <lightning:outputField fieldName="Name" />
+            <lightning:outputField fieldName="Email__c" />
+        </div>
+    </lightning:recordViewForm>
+    </div>
+				</div>
+				<div class="slds-modal__footer">
+
+					<lightning:button variant="brand" label="Закрыть" class="slds-float_left"
+                                                  onclick="{!c.closeView}"/>
+					<lightning:button variant="brand" label="Make orderIF" class="slds-float_left"
+                                                  onclick="{!c.makeOrder}"/>
+				</div>
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </aura:if>
+</aura:component>

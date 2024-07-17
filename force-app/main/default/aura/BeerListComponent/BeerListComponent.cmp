@@ -1,0 +1,16 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="recordList" type="Beer_Kind__c[]"/>
+    <aura:attribute name="length" type="Integer"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="addToCart" event="c:AddToCart" action="{!c.catchEvent}"/>
+    <div>
+    	<div class="slds-grid slds-wrap">
+        	<aura:iteration items="{!v.recordList}" var="item" >
+    			<div class="slds-col slds-size_1-of-4 slds-p-around_small ">
+                    <c:BeerCard beerKind="{!item}"/>
+            	</div>
+             	
+    		</aura:iteration>
+        </div>
+    </div>
+</aura:component>

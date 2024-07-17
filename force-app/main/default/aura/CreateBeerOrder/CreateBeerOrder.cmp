@@ -1,0 +1,13 @@
+<aura:component implements="lightning:isUrlAddressable" access="global" >
+	<aura:attribute name="fields" type="String[]" default="['Name','Beer_Kind__c','Ordered_Quantity__c', 'Order_Amount__c']" />
+	<aura:attribute name="recordId" type="String"/>  
+    
+ 	<lightning:notificationsLibrary aura:id="notifLib"/>
+    
+   	<div class="slds-p-around_small">
+        <lightning:recordForm
+                              abjectApiName="Beer_Order__c"
+                              fields="{!v.fields}"
+                              onsuccess="{!c.handleSubmit}"/>
+    </div> 
+</aura:component>

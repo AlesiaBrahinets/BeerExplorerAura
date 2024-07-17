@@ -1,0 +1,12 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:registerEvent name="BeerEvent" type="c:SearchEvent"/>
+    <div class='slds-p-around_small'>
+    	<lightning:input
+        	name="inline-search-input"
+        	label="Beer search"
+        	type="search"
+        	variant="label-hidden"
+        	aura:id="SearchingInput"
+        	onchange="{!c.doSearch}"/>
+    </div> 
+</aura:component>
