@@ -5,7 +5,7 @@
 }, 
 
     goToCart : function(component, event, helper) {console.log('goTocart');
-    console.log('GoToCart_CartInfo_recordList=',component.get('v.recordList'));
+    console.log('GoToCart_CartInfo_recordList=',JSON.stringify(component.get('v.recordList')));
     console.log('GoToCart_CartInfo_beerNameList=',JSON.stringify(component.get('v.beerNameList')));
 
         let action = component.get('c.getCartId');
@@ -55,5 +55,6 @@
         }
         //console.log(names);
         component.set('v.beerNameList', names);
+        
     }
 })

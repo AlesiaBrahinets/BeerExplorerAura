@@ -6,13 +6,12 @@
     <aura:attribute name="beerRecord" type="Object"/>
     
     <div class="header">
-       <c:HeaderComponent aura:id="headerComp" mainTag="LIDSKAE BEER" mainMessage="Get a greate pleasure" />
+       <c:HeaderComponent aura:id="headerComponent" mainTag="LIDSKAE BEER" mainMessage="Get a greate pleasure" />
     </div>
     <div>
     	<c:BeerSearch/>
     </div>
     <div>
-        <p>Beer List Component</p>
         <c:BeerListComponent recordList="{!v.beerList}" />
     </div>
 </aura:component>

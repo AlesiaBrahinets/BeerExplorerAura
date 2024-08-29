@@ -14,17 +14,13 @@
                 </span>
         	</aura:set>
         	<aura:set attribute="footer">
-            	<div style="width: 70%; ">
-            		<lightning:button name="{!v.beerKind.Id}" label="View Details_LIB" value="View Details" 
+            	<div style="width: 70%; height: 70%; ">
+            		<lightning:button name="{!v.beerKind.Id}" label="View Details" value="View Details" 
                                   	variant="brand-outline" onclick="{!c.showDetail}">
                 	</lightning:button>
-                    <lightning:button name="{!v.beerKind.Id}" label="Add To CartT" value="{!v.beerKind.Name}" 
+                    <lightning:button name="{!v.beerKind.Id}" label="Add To Cart" value="{!v.beerKind.Name}" 
                                   	variant="brand-outline" onclick="{!c.addToCart}">
                 	</lightning:button>
-                  <lightning:button name="{!v.beerKind.Id}" label="View Details_AURA_IF" value="View Details" 
-                                  	variant="brand-outline" onclick="{!c.showDetailIf}">
-                	</lightning:button>
-                    
             	</div>
          	</aura:set>
             
@@ -47,36 +43,4 @@
         	</p>
         </lightning:card>
     </div>
-    
-    <aura:if isTrue="{!v.isOpenView}">
-    	<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open slds-modal_medium">
-			<div class="slds-modal__container">
-				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
-					<span class="slds-assistive-text">Cancel and close</span>
-				</button>
-				<div class="slds-modal__header">
-					<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate" tabindex="-1">View Detail</h1>
-				</div>
-				<div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-    				<c:BeerDetails beerId="{!v.beerKind.Id}"/>
-   <div class="slds-p-around_small">
-    <lightning:recordViewForm recordId="{!v.beerKind.Id}" objectApiName="Beer_Kind__c">
-        <div class="slds-box">
-            <lightning:outputField fieldName="Name" />
-            <lightning:outputField fieldName="Email__c" />
-        </div>
-    </lightning:recordViewForm>
-    </div>
-				</div>
-				<div class="slds-modal__footer">
-
-					<lightning:button variant="brand" label="Закрыть" class="slds-float_left"
-                                                  onclick="{!c.closeView}"/>
-					<lightning:button variant="brand" label="Make orderIF" class="slds-float_left"
-                                                  onclick="{!c.makeOrder}"/>
-				</div>
-			</div>
-		</section>
-		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
-    </aura:if>
 </aura:component>

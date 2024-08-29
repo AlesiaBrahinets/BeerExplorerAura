@@ -4,9 +4,9 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="addToCart" event="c:AddToCart" action="{!c.catchEvent}"/>
     <div>
-    	<div class="slds-grid slds-wrap">
+    	<div class="slds-grid slds-wrap content">
         	<aura:iteration items="{!v.recordList}" var="item" >
-    			<div class="slds-col slds-size_1-of-4 slds-p-around_small ">
+    			<div class="slds-col slds-size_1-of-4 slds-large-size_4-of-8 slds-p-around_small  slds-m-around_small itemContent">
                     <c:BeerCard beerKind="{!item}"/>
             	</div>
              	

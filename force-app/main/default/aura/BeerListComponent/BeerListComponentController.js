@@ -4,6 +4,7 @@
 	},
     catchEvent : function(component, event, helper) {
         console.log("catchEventInListComponent");
+        console.log("catchEvent_BeerListComponent_recordList=",component.get("v.recordList"));
     }
     
 })

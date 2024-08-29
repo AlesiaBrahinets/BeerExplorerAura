@@ -2,6 +2,7 @@
     <aura:attribute name="mainTag" type="String"/>
     <aura:attribute name="mainMessage" type="String"/>
     <aura:attribute name="recordList" type="List"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:method name="updateCart" access="public">
         <aura:attribute name="beerRecord" type="Object"/>
     </aura:method>
@@ -26,7 +27,7 @@
 </div>
 </div>
 <p class="slds-page-header__name-meta">
-    {!v.mainMessage}
+    {!v.mainMessage} --- {!v.recordList.length}
     </p>
 </div>
 </div>
