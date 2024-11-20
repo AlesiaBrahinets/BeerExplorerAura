@@ -9,38 +9,43 @@
     <div>
    		<lightning:card  iconName="custom:custom56" class="slds-p-around_medium">
         	<aura:set attribute="title">
-            	<span class="slds-p-horizontal_small">
+            	<span class="slds-p-horizontal_small title__main">
                     {!v.beerKind.Name} 
                 </span>
         	</aura:set>
         	<aura:set attribute="footer">
-            	<div style="width: 70%; height: 70%; ">
-            		<lightning:button name="{!v.beerKind.Id}" label="View Details" value="View Details" 
+            	<div>
+            		<lightning:button ariaLabel="view detail" name="{!v.beerKind.Id}" label="View Details" value="View Details" 
                                   	variant="brand-outline" onclick="{!c.showDetail}">
                 	</lightning:button>
-                    <lightning:button name="{!v.beerKind.Id}" label="Add To Cart" value="{!v.beerKind.Name}" 
+                    <lightning:button ariaLabel="add to cart" name="{!v.beerKind.Id}" label="Add To Cart" value="{!v.beerKind.Name}" 
                                   	variant="brand-outline" onclick="{!c.addToCart}">
                 	</lightning:button>
             	</div>
          	</aura:set>
             
-         	<p class="slds-p-horizontal_small">
-         		<div class="slds-grid slds-gutters ">
-         			<div class="slds-col slds-size_2-of-4 slds-align_absolute-center" >
+         	
+         		<div class="slds-grid slds-gutters body__beer">
+         			<div class="slds-col slds-size_2-of-6 slds-align_absolute-center" >
                 		<img src="{!v.beerKind.Beer_Image__c}" class="beerImage"/>
             		</div>
-            		<div class="slds-col slds-size_2-of-4">
-						<p class="title slds-align_absolute-left">Collection: {!v.beerKind.Collection__c}</p>
-            			<p class="title slds-align_absolute-left">Kind: {!v.beerKind.Name}</p>
-            			<p class="slds-align_absolute-center">Alcohol: {!v.beerKind.Alcohol__c}%</p>
-            			<p class="slds-align_absolute-center">
-               				Price:
-               				<lightning:formattedNumber value="{!v.beerKind.Price__c}" style="currency" currencyCode="USD" 
+            		<div class="slds-col slds-size_4-of-6 ">
+						<p class="title slds-align_absolute-left">Collection: <span class="title__beer">{!v.beerKind.Collection__c}</span></p>
+                        <br/>
+                        <p class="title slds-align_absolute-left">Kind:  <span class="title__beer">{!v.beerKind.Name}</span></p>
+                        <br/>
+                        <p class="title slds-align_absolute-left">Alcohol: <span class="title__param">{!v.beerKind.Alcohol__c}%</span></p>
+            			<p class="title slds-align_absolute-left">
+               				Price:  
+                            <span class="title__param">
+                            <lightning:formattedNumber value="{!v.beerKind.Price__c}" style="currency" currencyCode="USD" 
                                           maximum-fraction-digits="2"/>
+                            </span>
+               				
        					</p>
             		</div>
             	</div>
-        	</p>
+        	
         </lightning:card>
     </div>
 </aura:component>

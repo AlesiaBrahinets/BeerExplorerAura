@@ -1,8 +1,8 @@
 ({
     checkValue: function (cmp, event, helper) {console.log('checkValue');
-        var valueParams = event.getParams();
+        let valueParams = event.getParams();
         cmp.set("v.ifNeedToEnterAddress",!valueParams);
-        var fields = event.getParam('fields');
+        let fields = event.getParam('field');
         
         console.log('CheckAddress_fields=',fields);
     },
@@ -12,6 +12,7 @@
         let record = event.getParam("recordUi");    
         console.log('handleLoad_recordUI=',record);   //fields   
     },
+    
     handleSubmit : function (cmp, event, helper) {
         console.log('handleSubmit');
          event.preventDefault();       // stop the form from submitting
@@ -48,7 +49,6 @@
         cmp.find('recordEditForm').submit(fields);
         console.log('FieldsForReset_1',cmp.find('field'));
         }
-        
     },
     
     handleSuccess : function (cmp, event, helper) {
@@ -109,8 +109,7 @@
         event.preventDefault(); 
         var fields = event.getParam('fields');
         console.log('submitUpdating_fields for BeerKind=',fields);
-       
-},
+    },
 
 handleBeerSuccess : function (cmp, event, helper) {
     console.log('FieldsForReset_4=',cmp.find('field'));
@@ -125,22 +124,18 @@ handleBeerSuccess : function (cmp, event, helper) {
                 'c__orderId': cmp.get('v.orderId'), 
                 'c__objectApiName': 'Beer_Order__c'
             }   
-        
     };
         navService.navigate(pageReferenceN);    
         console.log('FINISH_handleBeerSuccess');
 },
-    
-    
+
      doInit: function(cmp, event, helper) {console.log('Init');
       let pageReference = cmp.get('v.pageReference');console.log('pageReference=',pageReference);
-                                         if(pageReference) {console.log('pageReference In Init');
-                                               let state = pageReference.state;
-                                               cmp.set('v.beerId',state.c__beerId);
-                                               console.log('beerId_Init_MakeOrder=',state.c__beerId);
-                                               
-                                           }
-        
+            if(pageReference) {console.log('pageReference In Init');
+            let state = pageReference.state;
+            cmp.set('v.beerId',state.c__beerId);
+            console.log('beerId_Init_MakeOrder=',state.c__beerId);
+                              }
     },
    
 })

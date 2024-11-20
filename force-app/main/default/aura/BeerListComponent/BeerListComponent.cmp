@@ -6,7 +6,7 @@
     <div>
     	<div class="slds-grid slds-wrap content">
         	<aura:iteration items="{!v.recordList}" var="item" >
-    			<div class="slds-col slds-size_1-of-4 slds-large-size_4-of-8 slds-p-around_small  slds-m-around_small itemContent">
+    			<div class="slds-col itemContent">
                     <c:BeerCard beerKind="{!item}"/>
             	</div>
              	

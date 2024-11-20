@@ -21,7 +21,8 @@
 
     updateCart : function(component, event, helper) {
         let params = event.getParam('beerRecord');
-       let headerComponent = component.find('headerComponent');
+        let headerComponent = component.find('headerComponent');
         headerComponent.updateCart(params);
+        console.log('AFTER UPDATE CART IN BEER EXPLORER');
     }
 })

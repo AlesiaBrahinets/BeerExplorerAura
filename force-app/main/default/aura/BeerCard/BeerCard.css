@@ -1,23 +1,37 @@
 .THIS.beerKind{
   background-color: yellow;
     min-width: 200px;
+    height: 300px;
+    margin: 10px;
     flex: 1;
 }
-
-.THIS .title{
-    font-weight: bold;
+.THIS .title__main {
+   color: #16cbc9;
+}
+.THIS .title__beer{
+    white-space-collapse: collapse;
+    text-wrap: wrap;
     text-transform: uppercase;
     color: green;
-    display: flex;
     
 }
+.THIS .title__param {
+    font-weight: bold;
+    color: chocolate;
+    padding-left: 0.5rem;
+    
+}
+.THIS .title {
+    font-weight: bold;
+
+}
+.THIS .body__beer {
+    height: 11rem;
+}
 .THIS .beerImage{
-    height: 140px ;
+    margin: 0 1rem 0 1.5rem;
+    
+    height: 10rem ;
     max-width: initial;
     pointer-events: none;
-}
-
-:host{
-    min-width: 200px;
-    flex: 1;
 }

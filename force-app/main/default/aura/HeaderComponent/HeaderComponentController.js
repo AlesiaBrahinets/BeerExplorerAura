@@ -1,27 +1,20 @@
 ({
-	updateCart : function(component, event, helper) {
-        //console.log('updateCart In Header Component');
+	updateCart : function(component, event, helper) {console.log('updateCart_IN_HEADER_Component');
 		let params = event.getParam('arguments');
-        //console.log('updateCart In Header Component params=',params);
         if(params ){
-            //console.log('IF_updateCart In Header Component');
-            let beerRecord = params.beerRecord;
-            //console.log('updateCart In Header Component beerRecord=',beerRecord);
+            let beerRecord = params.beerRecord;console.log('updateCart_IN_HEADER_Component_beerRecord=',beerRecord);
             let existingRecords = component.get('v.recordList');
-            console.log('existingRecords_InHeaderComponent=',existingRecords);
-            if(existingRecords.length > 0) {console.log('existingRecords_IF=');
-            console.log('existingRecords_InIF_BEFOREEEEEE=',existingRecords);
+            
+             if(existingRecords.length > 0) {
+                console.log('existingRecords_InHeaderComponent=',JSON.stringify(existingRecords));
                 existingRecords.push(beerRecord);
-                console.log('existingRecords_InIF_AFTER=',existingRecords);
                 component.set('v.recordList',existingRecords);
             } else {
-                console.log('existingRecords_ElSeeeeeeee=',existingRecords);
+                console.log('existingRecords.length=0');
                 existingRecords = [];
                 existingRecords.push(beerRecord);
-               
                 component.set('v.recordList',existingRecords);
             }
-                    
                     let toastEvent = $A.get("e.force:showToast");
                     toastEvent.setParams({
                         "title":"Success!",
@@ -29,12 +22,27 @@
                          "type":"success",
                     });
                     toastEvent.fire();
-                    console.log('v.recordListAfter Adding Beer to cart=',JSON.stringify(component.get('v.recordList')));
         }
+                                                     
+        console.log('!!!!!!FiNISH_UPDATECART_METHOD_InHeaderComponent');
+                                                     
 	},
 
     doInit : function(component, event, helper) {
+        let action = component.get('c.getCartOnlyId');
+            action.setCallback(this, function(response){console.log('SUCCESS_HEADERCOMP_DO_INIT');
+                let state = response.getState();
+            	if(state === 'SUCCESS' || state === 'DRAFT'){
+                let cartId = response.getReturnValue();
+                console.log('createdCartId_InHeaderComponent= ',cartId);
+                component.set('v.createdCartId',cartId);
+                   
+                } else{
+                 console.log('Error_Getting_CartId_InHeaderComponent= ');   
+                }
+            });  
+            $A.enqueueAction(action);
         let existingRecords = component.get('v.recordList');
-       console.log('doInit in Header COmp recordList=',existingRecords);  
+       console.log('existingRecords_DO_INIT_InHeaderComponent',existingRecords);  
     }
 })

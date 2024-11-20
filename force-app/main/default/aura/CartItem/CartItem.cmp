@@ -1,6 +1,7 @@
 <aura:component controller="CartDetailsAuraServices">
     <aura:attribute name="cartItem" type="Object"/>
     <aura:attribute name="index" type="Integer"/>
+    <aura:registerEvent name="changeBeerQuantity" type="c:changeBeerQuantity"/>
     <div>
         <div class="slds-grid slds-wrap">
              <div class="slds-col slds-size_1-of-4">
@@ -15,7 +16,7 @@
             </div>
             <div class="slds-col slds-size_1-of-4">
                 <lightning:input type='Number' label="" value="{!v.cartItem.Item_Quantity__c}" 
-                                />
+                               oncommit="{! c.handleChangeValue}" />
                 
             </div>
             <div class="slds-col slds-size_1-of-4 slds-p-left_x-large">

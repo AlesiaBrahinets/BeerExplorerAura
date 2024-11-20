@@ -1,11 +1,16 @@
 <aura:component controller="DataTableAuraService">
 <aura:attribute name="data" type="Object"/>
 <aura:attribute name="column" type="Object"/>
-<aura:handler name="init" value="{!this}" action="{!c.doInint}"/>
+<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 <div>
     <lightning:datatable aura:id="accountTable"
     keyField="id"
     data="{!v.data}"
-    columns="{!v.columns}"/>
+    columns="{!v.columns}"
+    hideCheckboxColumn="false"    
+    onrowselection="{!c.doSelectRecord}"
+    onrowaction="{!c.handleRowAction}"
+                         />
+    
 </div>
-</aura:component>	
+</aura:component>

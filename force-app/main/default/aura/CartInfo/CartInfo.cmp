@@ -1,16 +1,25 @@
-<aura:component controller="CartDetailsAuraServices">
+<aura:component implements="lightning:isUrlAddressable,force:appHostable,flexipage:availableForAllPageTypes" controller="CartDetailsAuraServices">
     <aura:attribute name="recordList" type="List"/>
     <aura:attribute name="beerNameList" type="String[]" />
     <aura:attribute name="cartId" type="String" />
+
+    <aura:attribute name="pageReference" type="Object"/>
+    <aura:attribute name="itemsQuantity" type="Integer" />
+   
+     <aura:attribute name="itemList" type="List"/>
+    <aura:attribute name="subTotal" type="Integer" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.recordList}" action="{!c.createCartItems}"/>
+    
     <lightning:navigation aura:id="navigation" />
-	<lightning:layout >
+	
+    <lightning:layout >
             <lightning:layoutItem padding="around-small">
                 <a href="JavaScript:void(0);" onclick="{!c.goToCart}" >
                 <lightning:icon iconName="utility:cart" size="large"/>
             </a>       
-                <span style="front-size: 1rem;">{!v.recordList.length}</span>
+                <!-- <span style="front-size: 1rem;">{!v.recordList.length}</span>-->
+                <span style="front-size: 1rem;">{!v.itemsQuantity}</span>
             </lightning:layoutItem>
     </lightning:layout>
 </aura:component>

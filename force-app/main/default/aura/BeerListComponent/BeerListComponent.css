@@ -1,19 +1,22 @@
 .THIS .content{
-    padding: 8px;
-    background-color: #ffffff;
+   /* padding: 8px;*/
+    background-color: blue;
     border-radius: 0.25rem;
-    display: flex;
-    flex-wrap: wrap;
+  /*  display: flex;
+    flex-wrap: wrap;*/
+        gap: 0.7rem;
+    padding: 0.7rem;
+    
 }
-/*.THIS .itemContent{
-    display: flex;
-  flex-wrap: wrap;
-    
+.THIS .itemContent{
+    width:20rem;
+  /*  flex-basis: auto;*/
+   /* min-width: 35%;*/
+    /*height:80%;
+    flex: 1;*/
  
-}*/
-/*.THIS .cBeerCard{
+}
+.THIS .cBeerCard{
+   /* width: 20rem;*/
     
-   flex: 1;
-    
-    
-}*/
+}

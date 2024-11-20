@@ -1,7 +1,8 @@
-<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="CartDetailsAuraServices" >
     <aura:attribute name="mainTag" type="String"/>
     <aura:attribute name="mainMessage" type="String"/>
     <aura:attribute name="recordList" type="List"/>
+    <aura:attribute name="createdCartId" type="String"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:method name="updateCart" access="public">
         <aura:attribute name="beerRecord" type="Object"/>
@@ -32,7 +33,7 @@
 </div>
 </div>
 </div>
-    <c:CartInfo recordList="{!v.recordList}"/>
+    <c:CartInfo recordList="{!v.recordList}" cartId="{!v.createdCartId}"/>
 </div>
 </div>
 </aura:component>

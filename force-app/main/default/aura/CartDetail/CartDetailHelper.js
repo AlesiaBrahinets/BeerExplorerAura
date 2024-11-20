@@ -5,11 +5,8 @@
         action.setCallback(this, function(response){
             var state = response.getState();
             console.log('state=',state);
-            if(state === 'SUCCESS' || state === 'DRAFT'){console.log('stateSUCCESS=',state);
+            if(state === 'SUCCESS' || state === 'DRAFT'){
                 var responseData = response.getReturnValue();
-             console.log('resultData_IN FETCHmethodNOTParse=', responseData);
-                
-               
                 let listAddress = [];
 for (let i=0; i<responseData.length; i++) {
     let address = responseData[i].Country__c +" "+responseData[i].State__c +" "+responseData[i].City__c +" "+responseData[i].Street__c ;
