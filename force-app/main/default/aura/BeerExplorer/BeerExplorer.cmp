@@ -1,10 +1,9 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller='BeerSearchAuraController' >
-	<aura:handler name="init" value="{!this}" action="{!c.handleCompEvent}"/>
 	<aura:handler name="BeerEvent" event="c:SearchEvent" action="{!c.handleCompEvent}"/>
 	<aura:attribute name="beerList" type="Beer_Kind__c[]"/>
     <aura:handler name="addToCart" event="c:AddToCart" action="{!c.updateCart}"/>
     <aura:attribute name="beerRecord" type="Object"/>
-    
+    <aura:attribute name="searchText" type="String"/>
     <div class="header">
        <c:HeaderComponent aura:id="headerComponent" mainTag="LIDSKAE BEER" mainMessage="Get a greate pleasure" />
     </div>

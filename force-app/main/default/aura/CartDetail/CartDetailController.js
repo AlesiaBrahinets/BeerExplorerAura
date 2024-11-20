@@ -169,7 +169,7 @@
   
 
     placeOrder : function(component, event, helper){
-        $A.get('e.force:refreshView').fire();
+        
         console.log('placeOrder=', component.get('v.selectedAddress'));
 
         let selectedAdd = component.get('v.selectedAddress');

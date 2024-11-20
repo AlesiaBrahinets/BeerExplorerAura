@@ -20,7 +20,12 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.isCheckout}" action="{!c.getAddress}" />
     <aura:handler name="changeBeerQuantity" event="c:changeBeerQuantity" action="{!c.catchChangingEvent}"/>
-    
+    <ltng:require scripts="{!join(',',
+                           $Resource.Bootstrap_doc + '/bootstrap-5.3.3-dist/js/bootstrap.min.js',
+                           $Resource.JQuery_doc +'/jquery-3.7.1.min.js',
+                           $Resource.JScode + '/jsFile.js')}"
+                  styles="{!$Resource.Css_doc + '/cssFile.css'}"
+    afterScriptsLoaded="{!c.afterScriptsLoaded}" />
         
     
     
@@ -152,7 +157,7 @@
                                                 <lightning:input name="input3" aura:id="CouponNo" 
                                                                  label="15 Digit Valid Coupon No" 
                                                                  placeholder="type here..."/>
-                                                <lightning:button label="Apply" variant="brand"
+                                                <lightning:button class="btn-warning" label="Apply" variant="brand"
                                                                   onclick="{!c.doApplyCoupon}"/>
                                             </p>
                                         </aura:if>
