@@ -1,21 +1,18 @@
 <aura:component>
     <aura:attribute name="beerId" type="String" />
-    
     <aura:attribute name="pageReference" type="Object"/>
     <lightning:navigation aura:id="navigation" />
     
     <div class="slds-p-around_small">
-        
-    <lightning:recordForm
-        recordId="{!v.beerId}"
-        objectApiName="Beer_Kind__c"
-        layoutType="Full"
-        columns="2"
-        mode="readonly"/>
-        
+        <lightning:recordForm
+            recordId="{!v.beerId}"
+            objectApiName="Beer_Kind__c"
+            layoutType="Full"
+            columns="2"
+            mode="readonly"/>
         <div class="slds-p-around_small">
-        <lightning:button value="Order Now" variant="brand" label="Make order" 
-                                                  onclick="{!c.makeOrder}"/>
+            <lightning:button value="Order Now" variant="brand" label="Make order" 
+                                onclick="{!c.makeOrder}"/>
         </div>
     </div>
 </aura:component>

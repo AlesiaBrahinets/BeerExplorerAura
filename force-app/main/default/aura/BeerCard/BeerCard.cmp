@@ -23,8 +23,7 @@
                 	</lightning:button>
             	</div>
          	</aura:set>
-            
-         	
+                     	
          		<div class="slds-grid slds-gutters body__beer">
          			<div class="slds-col slds-size_2-of-6 slds-align_absolute-center" >
                 		<img src="{!v.beerKind.Beer_Image__c}" class="beerImage"/>
@@ -41,11 +40,9 @@
                             <lightning:formattedNumber value="{!v.beerKind.Price__c}" style="currency" currencyCode="USD" 
                                           maximum-fraction-digits="2"/>
                             </span>
-               				
        					</p>
             		</div>
             	</div>
-        	
         </lightning:card>
     </div>
 </aura:component>

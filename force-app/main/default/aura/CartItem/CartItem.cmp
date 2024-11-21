@@ -9,7 +9,7 @@
                     {!v.cartItem.Beer_Kind__r.Name}
                 </a>
             </div>
-            
+
             <div class="slds-col slds-size_1-of-4">
                 <lightning:formattedNumber label="Price" value="{!v.cartItem.Total_Amount__c}" 
                                            style="currency" currencyCode="USD"/>
@@ -17,7 +17,6 @@
             <div class="slds-col slds-size_1-of-4">
                 <lightning:input type='Number' label="" value="{!v.cartItem.Item_Quantity__c}" 
                                oncommit="{! c.handleChangeValue}" />
-                
             </div>
             <div class="slds-col slds-size_1-of-4 slds-p-left_x-large">
                 <a href="JavaScript:void(0);" id="{!v.cartItem.Id}" onclick="{!c.deleteCartItem}" >

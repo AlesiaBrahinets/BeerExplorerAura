@@ -1,7 +1,6 @@
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
     <aura:attribute name="recordList" type="Beer_Kind__c[]"/>
     <aura:attribute name="length" type="Integer"/>
-    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="addToCart" event="c:AddToCart" action="{!c.catchEvent}"/>
     <div>
     	<div class="slds-grid slds-wrap content">
@@ -9,7 +8,6 @@
     			<div class="slds-col itemContent">
                     <c:BeerCard beerKind="{!item}"/>
             	</div>
-             	
     		</aura:iteration>
         </div>
     </div>

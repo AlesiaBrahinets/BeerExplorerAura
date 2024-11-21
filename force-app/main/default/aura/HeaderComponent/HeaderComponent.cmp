@@ -9,31 +9,25 @@
     </aura:method>
     
     <div class="slds-page-header header">
-<div class="slds-page-header__row">
-<div class="slds-page-header__col-title">
-<div class="slds-media">
-<div class="slds-media__figure">
-<!--<span class="slds-icon_container slds-icon-standard-opportunity" title="opportunity">
-<span class="slds-assistive-text">opportunity</span>
-</span>-->
-</div>
-<div class="slds-media__body">
-<div class="slds-page-header__name">
-<div class="slds-page-header__name-title">
-<h1>
-<span class="slds-page-header__title slds-truncate" title="Beer">
-    {!v.mainTag}
-    </span>
-</h1>
-</div>
-</div>
-<p class="slds-page-header__name-meta">
-    {!v.mainMessage} --- {!v.recordList.length}
-    </p>
-</div>
-</div>
-</div>
-    <c:CartInfo recordList="{!v.recordList}" cartId="{!v.createdCartId}"/>
-</div>
-</div>
+        <div class="slds-page-header__row">
+            <div class="slds-page-header__col-title">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                    </div>
+                    <div class="slds-media__body">
+                        <div class="slds-page-header__name">
+                            <div class="slds-page-header__name-title">
+                                <h1>
+                                    <span class="slds-page-header__title slds-truncate" title="Beer">
+                                        {!v.mainTag}
+                                    </span>
+                                </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <c:CartInfo recordList="{!v.recordList}" cartId="{!v.createdCartId}"/>
+        </div>
+    </div>
 </aura:component>

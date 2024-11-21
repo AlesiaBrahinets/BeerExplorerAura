@@ -5,15 +5,11 @@
      <aura:attribute name="pageReference" type="Object"/>
   
     <lightning:card>
-    <lightning:recordForm
-        recordId="{!v.orderId}"
-        objectApiName="{!v.objectApiName}"
-        layoutType="Full"
-        columns="2"
-        mode="readonly"/>
-    </lightning:card>  
-  
-    
-      
-    
+        <lightning:recordForm
+            recordId="{!v.orderId}"
+            objectApiName="{!v.objectApiName}"
+            layoutType="Full"
+            columns="2"
+            mode="readonly"/>
+        </lightning:card>  
 </aura:component>
