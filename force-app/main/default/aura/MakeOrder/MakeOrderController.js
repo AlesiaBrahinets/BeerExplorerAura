@@ -2,21 +2,14 @@
     doInit: function (componet, event, helper) {
         let pageReference = componet.get('v.pageReference'); 
         if (pageReference) {
-            let state = pageReference.state;
-            componet.set('v.beerId', state.c__beerId);
+            componet.set('v.beerId', pageReference.state.c__beerId);
         }
     },
 
     checkValue: function (componet, event, helper) {
-        let valueParams = event.getParams();
-        componet.set("v.ifNeedToEnterAddress",!valueParams);
+        componet.set("v.ifNeedToEnterAddress",!event.getParams());
     },
 
-	handleLoad: function (componet, event, helper) {
-        let record = event.getParam("recordUi");    
-        console.log('handleLoad_recordUI=',record); 
-    },
-    
     handleSubmit : function (componet, event, helper) {
         event.preventDefault();       
         let fields = event.getParam('fields');
@@ -50,33 +43,29 @@
     },
     
     handleSuccess : function (componet, event, helper) {
-        let recordId = event.getParam('response').id;
-        componet.set('v.orderId',recordId);
-        let resultToast = $A.get('e.force:showToast');
-        resultToast.setParams({
+        componet.set('v.orderId',event.getParam('response').id);
+        $A.get('e.force:showToast')
+        .setParams({
             "title": "Order placing",
             "message": "Your order has been successfully placed",
             "type": "Success"
-        });
-        resultToast.fire();
-        componet.find('field').forEach(function(f) {
-            f.reset();
-        });
-        let componetKind = componet.find('recordViewer');
-        componetKind.submit({"Remaining_Quantity__c":componet.get("v.remainingQuantityOfBeerKind")});
+        })
+        .fire();
+        componet.find('field').forEach((f) => f.reset());
+        componet.find('recordViewer').submit({"Remaining_Quantity__c" : componet.get("v.remainingQuantityOfBeerKind")});
     },
       
     handleLoadBeer: function (componet, event, helper) {
         let record = event.getParam("recordUi");
         componet.set("v.price", record.record.fields.Price__c);
-        componet.set("v.remainingQuantityOfBeerKind",record.record.fields.Remaining_Quantity__c.value);
-        componet.set("v.recordBeerKind",record.record.fields); 
+        componet.set("v.remainingQuantityOfBeerKind", record.record.fields.Remaining_Quantity__c.value);
+        componet.set("v.recordBeerKind", record.record.fields); 
     },
     
     submitUpdating : function (componet, event, helper) {
         event.preventDefault(); 
         let fields = event.getParam('fields');
-        console.log('submitUpdating_fields for BeerKind=',fields);
+        console.log('submitUpdating_fields for BeerKind=', fields);
     },
 
     handleBeerSuccess : function (componet, event, helper) {

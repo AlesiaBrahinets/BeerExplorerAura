@@ -17,7 +17,6 @@
    
     <lightning:navigation aura:id="navigation" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    <aura:handler name="change" value="{!v.isCheckout}" action="{!c.getAddress}" />
     <aura:handler name="changeBeerQuantity" event="c:changeBeerQuantity" action="{!c.catchChangingEvent}"/>
     <ltng:require scripts="{!join(',',
                            $Resource.Bootstrap_doc + '/bootstrap-5.3.3-dist/js/bootstrap.min.js',
@@ -26,8 +25,6 @@
                   styles="{!$Resource.Css_doc + '/cssFile.css'}"
     afterScriptsLoaded="{!c.afterScriptsLoaded}" />
         
-    
-    
 <div class="c-container">
     <lightning:layout multipleRows="true">
         <lightning:layoutItem padding="around-small" size="12">
@@ -142,7 +139,6 @@
                                                             onclick="{!c.doApplyCoupon}"/>
                                         </p>
                                     </aura:if>
-<<<<<<< Updated upstream
                                     <aura:if isTrue="{!v.isCouponAplied}">
                                         <aura:if isTrue="{!!v.isCouponSuccess}">
                                             <p>
@@ -164,12 +160,6 @@
                                             the total of your Cart.
                                             </p>
                                         </aura:if>
-=======
-                                    <aura:if isTrue="{!v.errorDiscount != null}">
-                                        <p class="errorDiscount">
-                                            {!v.errorDiscount}
-                                        </p>
->>>>>>> Stashed changes
                                     </aura:if>
                                     <aura:if isTrue="{!v.discountAmount != null}">
                                         <p class="appliedDiscount">
@@ -182,26 +172,22 @@
                                 <br/>
                                 <aura:if isTrue="{!!v.isCheckout}" >
                                     <lightning:buttonGroup>
-                                        <lightning:button label="Continue"
-                                                            onclick="{!c.homePage}"/>
+                                        <lightning:button ariaLabel="Continue purchase"
+                                                          ariaDescribedBy="descriptionContinue"
+                                                          label="Continue"
+                                                          onclick="{!c.homePage}"/>
                                         <lightning:button label="Proceed Checkout"
-                                                            variant="brand"
-                                                            onclick="{!c.doCheckout}"/>
+                                                          variant="brand"
+                                                          onclick="{!c.doCheckout}"/>
                                     </lightning:buttonGroup>
                                 </aura:if>
                             </div>
                         </aura:if>
                         <div class="page-section page-right">
-                            <h2>Frequently Purchased..</h2>
+                            <h2 id="descriptionContinue">Go to Shop page and to continue purchase.</h2>
                         </div>
                     </lightning:layoutItem>
                 </lightning:layout>
-            </lightning:layoutItem>
-
-            <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
-                <div class="page-footer page-section">
-                    <h2>Beer Explorer</h2>
-                </div>
             </lightning:layoutItem>
         </lightning:layout>
     </div>    

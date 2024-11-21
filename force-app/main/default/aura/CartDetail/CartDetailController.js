@@ -19,10 +19,10 @@
                         let resultData = response.getReturnValue();
                         let items = [];
                         let subTotal;
-                        for(let key in resultData){
+                        for(let key in resultData) {
                             items.push(resultData[key]);
                             
-                            if(subTotal){
+                            if(subTotal) {
                                 subTotal = subTotal + resultData[key].Total_Amount__c;  
                             } else {
                                 subTotal = resultData[key].Total_Amount__c;    
@@ -47,8 +47,7 @@
                 $A.enqueueAction(action);
             }
         }
-    },
-    
+    }, 
     
     homePage : function(component, event, helper) {component.set('v.cartId', null);
         let pageReference = component.find("navigation");
@@ -89,7 +88,7 @@
                     } else {
                         component.set('v.errorDiscount','Coupon is not Valid OR Expired.');
                         component.set('v.discountAmount',null);
-                         component.set('v.isCouponSuccess', false);
+                        component.set('v.isCouponSuccess', false);
                     }
                 }
             });
@@ -127,35 +126,25 @@
 
         if(addrList) {
             let address = component.get('v.addressBook');
-            address['Id']=recordId;
+            address['Id'] = recordId;
             component.set('v.addressBook' , address);
-            let label = address['Country__c']+" "+ address['State__c'] + " "+ address['City__c']+ " "+ address['Street__c'];
+            let label = address['Country__c']+" "+ address['State__c'] + " " + address['City__c']+ " " + address['Street__c'];
             addrList.push({'label': label, 'value':recordId});
             component.set('v.addressList' , addrList);
         } else {
             let address = component.get('v.addressBook');
             address['Id']=recordId;
             component.set('v.addressBook' , address);
-            let label = address['Country__c']+" "+ address['State__c'] + " "+ address['City__c']+ " "+ address['Street__c'];
+            let label = address['Country__c']+" "+ address['State__c'] + " " + address['City__c'] + " " + address['Street__c'];
             addList.push({'label': label, 'value':recordId});
             component.set('v.addressList' , addList); 
         }
         component.set('v.isNewAddress', false);
     },
-
-    getAddress : function(component, event, helper){
-        let isTrue = component.get('v.isCheckout');
-        if(isTrue){
-            console.log('AddresListInGetAddress=',component.get('v.addressList'));
-        }
-    },
     
     onSelect : function(component, event, helper){
-        let selected = event.getParam("value");
-        component.set('v.selectedAddress', selected);
+        component.set('v.selectedAddress', event.getParam("value"));
     },
-    
-  
 
     placeOrder : function(component, event, helper){
         let selectedAdd = component.get('v.selectedAddress');
@@ -183,11 +172,11 @@
                     
                     let pageReference = component.find("navigation");
                     let pageReferenceNav = {    
-                        "type": "standard__recordPage",
-                        "attributes": {
-                            "recordId": resultData.Id,
-                            "objectApiName": "Group_Beer_Order__c",
-                            "actionName": "view"   
+                        type: "standard__recordPage",
+                        attributes: {
+                            recordId: resultData.Id,
+                            objectApiName: "Group_Beer_Order__c",
+                            actionName: "view"   
                         }
                     };
                     $A.get('e.force:refreshView').fire();
@@ -212,7 +201,6 @@
     },
     
     catchChangingEvent : function(component, event, helper){
-        let params = event.getParam('quantity');
         $A.get('e.force:refreshView').fire(); 
     }
 })

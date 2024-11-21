@@ -15,7 +15,6 @@
                                 <lightning:recordEditForm aura:id="recordViewer"
                                                         recordId="{!v.beerId}"
                                                         objectApiName="Beer_Kind__c"
-                                                        onload="{!c.handleLoadBeer}"
                                                         onsubmit="{!c.submitUpdating}"
                                                         onsuccess="{!c.handleBeerSuccess}">
                                         <lightning:outputField fieldName="Name" />
@@ -24,34 +23,35 @@
                         
                         <lightning:recordEditForm aura:id="recordEditForm"
                                                 objectApiName="Beer_Order__c"
-                                                onload="{!c.handleLoad}"
                                                 onsubmit="{!c.handleSubmit}"
                                                 onsuccess="{!c.handleSuccess}">
                                 <lightning:messages />
                                 <div class="slds-grid">
                                         <div class="slds-col slds-size_1-of-2 slds-p-around_small">    
-
-                                                <lightning:inputField aura:id="field" fieldName="Ordered_Quantity__c" required="true"/>
-                                                <lightning:inputField aura:id="field" fieldName="Ordered_by__c" required="true"/>
-                                                <lightning:inputField aura:id="field" fieldName="Shipping_Country__c" required="true" />
+                                                <lightning:inputField aura:id="field" fieldName="Ordered_Quantity__c"     required="true"/>
+                                                <lightning:inputField aura:id="field" fieldName="Ordered_by__c"           required="true"/>
+                                                <lightning:inputField aura:id="field" fieldName="Shipping_Country__c"     required="true" />
                                                 <lightning:inputField aura:id="field" fieldName="Shipping_Province__c" />
-                                                <lightning:inputField aura:id="field" fieldName="Shipping_City__c" required="true" />
-                                                <lightning:inputField aura:id="field" fieldName="Shipping_Street__c" required="true" />
+                                                <lightning:inputField aura:id="field" fieldName="Shipping_City__c"        required="true" />
+                                                <lightning:inputField aura:id="field" fieldName="Shipping_Street__c"      required="true" />
                                                 <lightning:inputField aura:id="field" fieldName="Shipping_Postal_Code__c" required="true" />  
                                           
                                         </div>
+                                        
                                         <div class="slds-col slds-size_1-of-2 slds-p-around_small">
-        
                                                 <lightning:inputField aura:id="field" fieldName="Billing_the_same_as_Shipping__c" onchange="{!c.checkValue}"/>
-                                                <lightning:inputField aura:id="field" fieldName="Billing_Country__c" required="{!v.ifNeedToEnterAddress}" />
+                                                <lightning:inputField aura:id="field" fieldName="Billing_Country__c"              required="{!v.ifNeedToEnterAddress}" />
                                                 <lightning:inputField aura:id="field" fieldName="Billing_Province__c" />
-                                                <lightning:inputField aura:id="field" fieldName="Billing_City__c" required="{!v.ifNeedToEnterAddress}" />
-                                                <lightning:inputField aura:id="field" fieldName="Billing_Street__c" required="{!v.ifNeedToEnterAddress}" />
-                                                <lightning:inputField aura:id="field" fieldName="Billing_Postal_Code__c" required="{!v.ifNeedToEnterAddress}" />                     
+                                                <lightning:inputField aura:id="field" fieldName="Billing_City__c"                 required="{!v.ifNeedToEnterAddress}" />
+                                                <lightning:inputField aura:id="field" fieldName="Billing_Street__c"               required="{!v.ifNeedToEnterAddress}" />
+                                                <lightning:inputField aura:id="field" fieldName="Billing_Postal_Code__c"          required="{!v.ifNeedToEnterAddress}" />                     
                                         </div>
                                 </div>
                                 <div class="slds-p-around_small">
-                                        <lightning:button class="slds-m-top_small" type="submit" label="Create new" />
+                                        <lightning:button class="slds-m-top_small" 
+                                                          type="submit" 
+                                                          label="Create new" 
+                                        />
                                 </div> 
                         </lightning:recordEditForm>
                 </lightning:card>
